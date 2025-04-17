@@ -1,10 +1,10 @@
 import 'package:shop_app/Constant.dart';
 import 'package:shop_app/helper/api.dart';
-import 'package:shop_app/models/updated_model.dart';
+import 'package:shop_app/models/all_product_model.dart';
 
 class UpdateData {
   Api api = Api();
-  Future<UpdatedModel> updateData({
+  Future<GetAllProductModel> updateData({
     required String id,
     required String title,
     required String price,
@@ -24,6 +24,6 @@ class UpdateData {
       },
       token: token,
     );
-    return UpdatedModel.fromJson(updatedData);
+    return GetAllProductModel.fromJson(updatedData);
   }
 }

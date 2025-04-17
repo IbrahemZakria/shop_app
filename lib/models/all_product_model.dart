@@ -40,7 +40,7 @@ class GetAllProductModel {
       title: json['title'],
 
       id: json['id'],
-      price: json['price'],
+      price: json['price'].toString(),
       description: json['description'] as String,
       category: json['category'] as String,
       image: json['image'] as String,
