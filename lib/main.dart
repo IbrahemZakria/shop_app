@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/Constant.dart';
 import 'package:shop_app/helper/api.dart';
-import 'package:shop_app/servise/apis/get_classes/get_all_products.dart';
 import 'package:shop_app/servise/apis/get_classes/get_categry.dart';
+import 'package:shop_app/servise/apis/posts/add_prouct.dart';
+import 'package:shop_app/servise/apis/put/update_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -120,14 +119,28 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          GetCategory().getcategory(CategorySearch: 'jewelery').then((value) {
-            print(
-              "طططططططططططططططططططططططططططططططططططططططططططططططططططططصصصصصصصصصصصصص${value[0].title}",
-            );
-            print(
-              "طططططططططططططططططططططططططططططططططططططططططططططططططططططصصصصصصصصصصصصص${value[1].category}",
-            );
-          });
+          Dio().put(
+            "https://fakestoreapi.com/products/8",
+            data: {
+              'title': 'test',
+              'price': 13.5,
+              'description': 'test',
+              'category': 'test',
+              'image': 'test',
+            },
+          );
+
+          // Api api = Api();
+          // api.updatetData(
+          //   url: "https://fakestoreapi.com/products/8",
+          //   data: {
+          //     'title': 'test',
+          //     'price': 13.5,
+          //     'description': 'test',
+          //     'category': 'test',
+          //     'image': 'test',
+          //   },
+          // );
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),

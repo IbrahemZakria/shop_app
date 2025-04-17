@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 
 class Api {
   Future<dynamic> getData(String url) async {
@@ -16,17 +17,61 @@ class Api {
   }
 
   //////////////////////////////////////////////////////////////////////////////
-  Future<dynamic> postData(String url, Map<String, dynamic> data) async {
+  Future<dynamic> postData({
+    required String url,
+    @required Map<String, dynamic>? data,
+    String? token,
+  }) async {
     Dio dio = Dio();
-    dio.post(
-      url,
-      data: data,
-      options: Options(
-        headers: {
-          'Content-Type': 'x-www-form-urlencoded',
-          'Accept': 'application/json',
-        },
-      ),
-    );
+    Map<String, String> headers = {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': 'application/json',
+    };
+    if (token != null) {
+      headers.addAll({"Authorization": "Bearer $token"});
+    }
+    try {
+      Response response = await dio.post(
+        url,
+        data: data,
+        options: Options(headers: headers),
+      );
+      if (response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw Exception('Failed to post data: ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Failed to post data: $e');
+    }
+  } //////////////////////////////////////////////////////////////////////////////
+
+  Future<dynamic> updatetData({
+    required String url,
+    @required Map<String, dynamic>? data,
+    String? token,
+  }) async {
+    Dio dio = Dio();
+    Map<String, String> headers = {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': '*/*',
+    };
+    if (token != null) {
+      headers.addAll({"Authorization": "Bearer $token"});
+    }
+    try {
+      Response response = await dio.put(
+        url,
+        data: data,
+        options: Options(headers: headers),
+      );
+      if (response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw Exception('Failed to post data: ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Failed to post data: $e');
+    }
   }
 }

@@ -8,7 +8,7 @@ class GetAllProducts {
   Api api = Api();
 
   Future<List<GetAllProductModel>> getAllProducts() async {
-    dynamic data = await api.getData("$baseUrl/products");
+    dynamic data = await api.getData("$KbaseUrl/products");
     List<GetAllProductModel> products = [];
 
     for (int i = 0; i < data.length; i++) {

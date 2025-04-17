@@ -8,7 +8,7 @@ class GetCategory {
     required String CategorySearch,
   }) async {
     dynamic data = await api.getData(
-      "$baseUrl/products/category/$CategorySearch",
+      "$KbaseUrl/products/category/$CategorySearch",
     );
     List<GetAllProductModel> products = [];
 
