@@ -4,7 +4,7 @@ import 'package:shop_app/models/all_product_model.dart';
 
 class AddProuct {
   Api api = Api();
-  Future<GetAllProductModel> addProduct({
+  Future<ProductModel> addProduct({
     required String title,
     required String price,
     required String description,
@@ -21,7 +21,7 @@ class AddProuct {
         'image': image,
       },
     );
-    GetAllProductModel responseData = GetAllProductModel.fromJson(data);
+    ProductModel responseData = ProductModel.fromJson(data);
     return responseData;
   }
 }

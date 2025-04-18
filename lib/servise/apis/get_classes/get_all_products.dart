@@ -7,14 +7,12 @@ class GetAllProducts {
   Dio dio = Dio();
   Api api = Api();
 
-  Future<List<GetAllProductModel>> getAllProducts() async {
+  Future<List<ProductModel>> getAllProducts() async {
     dynamic data = await api.getData("$KbaseUrl/products");
-    List<GetAllProductModel> products = [];
+    List<ProductModel> products = [];
 
     for (int i = 0; i < data.length; i++) {
-      products.add(
-        GetAllProductModel.fromJson(data[i] as Map<String, dynamic>),
-      );
+      products.add(ProductModel.fromJson(data[i] as Map<String, dynamic>));
     }
     return products;
   }

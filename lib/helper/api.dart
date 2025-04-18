@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:shop_app/helper/component/UserMessage.dart';
 
 class Api {
   Future<dynamic> getData(String url) async {
@@ -66,12 +68,19 @@ class Api {
         options: Options(headers: headers),
       );
       if (response.statusCode == 200) {
-        return response.data;
+        Usermessage.show(
+          message: "updated sucssesfully",
+          backgroundColor: Colors.green,
+        );
+        Map<String, dynamic> responseData =
+            response.data as Map<String, dynamic>;
+
+        return responseData;
       } else {
-        throw Exception('Failed to post data: ${response.statusCode}');
+        throw Exception('Failed to update  data: ${response.statusCode}');
       }
     } catch (e) {
-      throw Exception('Failed to post data: $e');
+      throw Exception('Failed to update  data: $e');
     }
   }
 }

@@ -16,7 +16,7 @@ class Rating {
   }
 }
 
-class GetAllProductModel {
+class ProductModel {
   final int id;
   final String title;
   final String price;
@@ -25,7 +25,7 @@ class GetAllProductModel {
   final String image;
   final Rating rating;
 
-  GetAllProductModel({
+  ProductModel({
     required this.id,
     required this.title,
     required this.price,
@@ -35,8 +35,8 @@ class GetAllProductModel {
     required this.rating,
   });
 
-  factory GetAllProductModel.fromJson(dynamic json) {
-    return GetAllProductModel(
+  factory ProductModel.fromJson(dynamic json) {
+    return ProductModel(
       title: json['title'],
 
       id: json['id'],

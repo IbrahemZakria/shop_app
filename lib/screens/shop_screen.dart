@@ -39,8 +39,7 @@ class ShopScreen extends StatelessWidget {
           } else if (snapshot.data!.isEmpty) {
             return const Center(child: Text('No products available.'));
           } else {
-            List<GetAllProductModel> products =
-                snapshot.data! as List<GetAllProductModel>;
+            List<ProductModel> products = snapshot.data!;
             return Padding(
               padding: EdgeInsets.only(top: height * .04, left: 10, right: 10),
               child: GridView.builder(

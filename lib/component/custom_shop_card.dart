@@ -1,27 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/models/all_product_model.dart';
+import 'package:shop_app/screens/ubdate_screen.dart';
 
 // ignore: must_be_immutable
 class CustomShopCard extends StatelessWidget {
   CustomShopCard({required this.updatedModel, Key? key}) : super(key: key);
-  GetAllProductModel updatedModel;
+  ProductModel updatedModel;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(
-          context,
-          'product_details_screen',
-          arguments: {
-            'id': updatedModel.id,
-            'title': updatedModel.title,
-            'price': updatedModel.price,
-            'description': updatedModel.description,
-            'category': updatedModel.category,
-            'image': updatedModel.image,
-          },
-        );
+        Navigator.pushNamed(context, UbdateScreen.id, arguments: updatedModel);
       },
       child: Stack(
         clipBehavior: Clip.none,
